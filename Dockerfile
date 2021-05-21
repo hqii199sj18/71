@@ -6,6 +6,6 @@ RUN apt update && apt install wget -y \
     jq \
     && rm -rf /var/lib/apt/lists/*
 
-COPY run.sh meta.json /
-RUN chmod +x /run.sh
-ENTRYPOINT ["/run.sh"]
+COPY . .
+
+CMD ["printenv"]
