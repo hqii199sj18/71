@@ -1,10 +1,7 @@
-FROM ubuntu:bionic
+FROM ubuntu:zesty
 
-RUN apt update && apt install wget -y \
-    git \
-    zip \
-    jq \
-    && rm -rf /var/lib/apt/lists/*
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
 
 COPY . .
 
